@@ -23,3 +23,11 @@ export async function login(identifier: string, password: string): Promise<strin
         return error;
     }
 }
+
+export function isloggedin(): boolean {
+    // TODO: Use also a query to check from the backend
+    if (localStorage.getItem('jwt_token')) {
+        return true
+    }
+    return false
+}

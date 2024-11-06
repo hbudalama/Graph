@@ -11,11 +11,6 @@ body {
     background-color: #040009;
     height: 100vh;
   }
-
-
-  div {
-    border: 1px solid white;
-  }
   
   .header {
     display: flex;
@@ -32,6 +27,12 @@ body {
     border: none;
     padding: 8px 16px;
     cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    font-size: large;
+    margin-right: 20px;
+    border-radius: 5px;
+    font-weight: bold;
   }
   
   .logout-btn:hover {
@@ -52,6 +53,9 @@ body {
   .top-container {
     flex: 1; /* This will take the top half */
     /* margin-bottom: 10px; */
+    border: 1px solid rgba(255, 255, 255, 0.244);
+    background-color: #37006e21;
+    border-radius: 5px;
   }
   
 
@@ -59,18 +63,19 @@ body {
     flex: 1; /* This will take the bottom half */
     display: flex;
     margin-top: 10px;
+    border: 1px solid white;
   }
   
 
   .bottom-left {
     flex: 1; /* This takes the left half of the bottom container */
     margin-right: 10px;
-
+    border: 1px solid white;
   }
   
 
   .bottom-right {
     flex: 1; /* This takes the right half of the bottom container */
     margin-left: 10px;
-
+    border: 1px solid white;
   }

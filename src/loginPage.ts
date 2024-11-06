@@ -1,5 +1,6 @@
 import van from 'vanjs-core';
 import { login } from './login';
+import { ShowDashboardPage } from './dashboard';
 const { div, form, input, button, img, h1 } = van.tags;
 
 async function formSubmitHandler(e: SubmitEvent) {
@@ -29,9 +30,7 @@ async function formSubmitHandler(e: SubmitEvent) {
   const trimJwtOrError = jwtOrError.replace(/^['"]|['"]$/g, '');
   localStorage.setItem("jwt_token", trimJwtOrError)
 
-  localStorage.getItem("jwt_token")
-
-  console.log(trimJwtOrError);
+  ShowDashboardPage()
 }
 
 export function LoginPage() {

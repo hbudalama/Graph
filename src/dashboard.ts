@@ -1,15 +1,16 @@
 import van from 'vanjs-core';
+import { handleLogout } from './logout';
 
 const { div, img, button } = van.tags;
 
-function DashboardPage(): HTMLDivElement {
+export function DashboardPage(): HTMLDivElement {
   return div(
     {
       class: 'home-container',
     },
     div({ class: 'header' },
       div({ class: 'logo' }, img({ src: '/logo.svg' })),
-      button({ type: 'submit', class: 'logout-btn'}, 'Logout')
+      button({ class: 'logout-btn', onclick: handleLogout}, 'Logout')
      ),
     div({ class: 'home-content' },
       div({ class: 'top-container'}),

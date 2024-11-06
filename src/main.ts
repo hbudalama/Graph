@@ -1,13 +1,13 @@
 import { ShowLoginPage } from './loginPage'
 import { ShowDashboardPage } from './dashboard'
-import { login } from './login'
+import { isloggedin, login } from './login'
 
 const app = document.querySelector<HTMLDivElement>('#app')
 
 
 // check if logged in?
-if (!true) {
-  ShowLoginPage()
+if (isloggedin()) {
+ ShowDashboardPage()
 } else {
-  ShowDashboardPage()
+  ShowLoginPage()
 }
