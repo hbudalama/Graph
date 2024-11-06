@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: garamond;
+}
+
+body {
+    background-color: #040009;
+    height: 100vh;
+  }
+
+
+  div {
+    border: 1px solid white;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* padding: 10px 20px; */
+  }
+  
+  
+  .logout-btn {
+    background-color: #8e4ec6;
+    color: #e5d3f2d1;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .logout-btn:hover {
+    background-color: #e5d3f2d1;
+    color: #8e4ec6;
+    transition: 200ms;
+  }
+  
+
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px); /* Adjust height to fill the rest of the screen */
+    padding: 10px;
+  }
+  
+
+  .top-container {
+    flex: 1; /* This will take the top half */
+    /* margin-bottom: 10px; */
+  }
+  
+
+  .bottom-container {
+    flex: 1; /* This will take the bottom half */
+    display: flex;
+    margin-top: 10px;
+  }
+  
+
+  .bottom-left {
+    flex: 1; /* This takes the left half of the bottom container */
+    margin-right: 10px;
+
+  }
+  
+
+  .bottom-right {
+    flex: 1; /* This takes the right half of the bottom container */
+    margin-left: 10px;
+
+  }
