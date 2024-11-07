@@ -11,6 +11,9 @@ export function initializeRadarChart() {
       chart: {
         height: 350,
         type: "radar",
+        toolbar: {
+            show: false
+          }
       },
       title: {
         text: "Basic Radar Chart",

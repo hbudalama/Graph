@@ -54,6 +54,8 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .bottom-container {
@@ -87,4 +89,17 @@ body {
 #level {
   justify-items: right;
   display: flex;
+  justify-content: flex-end;
+}
+
+.student-name {
+  color: #e5d3f2d1;
+  font-size: larger;
+  justify-items: flex-start;
+}
+
+.student-info {
+  padding: 30px;
+  color: #e5d3f2d1;
+  font-size: 2em;
 }

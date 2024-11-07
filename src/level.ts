@@ -8,7 +8,7 @@ export function initializeLevel() {
         height: 350,
         type: 'radialBar',
         toolbar: {
-          show: true
+          show: false
         }
       },
       plotOptions: {

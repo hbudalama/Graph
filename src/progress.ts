@@ -14,6 +14,9 @@ export function initializeProgressChart() {
       zoom: {
         enabled: false,
       },
+      toolbar: {
+        show: false
+      }
     },
     dataLabels: {
       enabled: false,

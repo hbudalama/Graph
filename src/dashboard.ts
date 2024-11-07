@@ -3,8 +3,9 @@ import { handleLogout } from './logout';
 import { initializeRadarChart } from './spiderweb';
 import { initializeProgressChart } from './progress';
 import { initializeLevel } from './level';
+import { fetchRadarData } from './radar';
 
-const { div, img, button } = van.tags;
+const { div, img, button, h1, p } = van.tags;
 
 export function DashboardPage(): HTMLDivElement {
   return div(
@@ -17,6 +18,12 @@ export function DashboardPage(): HTMLDivElement {
      ),
     div({ class: 'home-content' },
       div({ class: 'top-container'},
+        div({ class: 'student-info'},
+          h1({ class: 'student-name'}, 'Hello, Hanin!'),
+          p({ class: 'email'}, 'Haneenbudalama@gmail.com'),
+          p({ class: 'audit-ratio'}, 'Audit ratio: 1.0!'),
+          p({ class: 'XP'}, '600KB'),
+        ),
         div({
           id: 'level'
         })
@@ -41,4 +48,5 @@ export function ShowDashboardPage() {
   initializeRadarChart();
   initializeProgressChart();
   initializeLevel();
+  fetchRadarData();
 }
