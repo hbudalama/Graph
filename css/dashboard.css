@@ -8,74 +8,83 @@
 }
 
 body {
-    background-color: #040009;
-    height: 100vh;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    /* padding: 10px 20px; */
-  }
-  
-  
-  .logout-btn {
-    background-color: #8e4ec6;
-    color: #e5d3f2d1;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    width: fit-content;
-    height: fit-content;
-    font-size: large;
-    margin-right: 20px;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  
-  .logout-btn:hover {
-    background-color: #e5d3f2d1;
-    color: #8e4ec6;
-    transition: 200ms;
-  }
-  
+  background-color: #040009;
+  height: 100vh;
+}
 
-  .home-content {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 60px); /* Adjust height to fill the rest of the screen */
-    padding: 10px;
-  }
-  
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* padding: 10px 20px; */
+}
 
-  .top-container {
-    flex: 1; /* This will take the top half */
-    /* margin-bottom: 10px; */
-    border: 1px solid rgba(255, 255, 255, 0.244);
-    background-color: #37006e21;
-    border-radius: 5px;
-  }
-  
+.logout-btn {
+  background-color: #8e4ec6;
+  color: #e5d3f2d1;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  font-size: large;
+  margin-right: 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
 
-  .bottom-container {
-    flex: 1; /* This will take the bottom half */
-    display: flex;
-    margin-top: 10px;
-    border: 1px solid white;
-  }
-  
+.logout-btn:hover {
+  background-color: #e5d3f2d1;
+  color: #8e4ec6;
+  transition: 200ms;
+}
 
-  .bottom-left {
-    flex: 1; /* This takes the left half of the bottom container */
-    margin-right: 10px;
-    border: 1px solid white;
-  }
-  
+.home-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px); /* Adjust height to fill the rest of the screen */
+  padding: 10px;
+}
 
-  .bottom-right {
-    flex: 1; /* This takes the right half of the bottom container */
-    margin-left: 10px;
-    border: 1px solid white;
-  }
+.top-container {
+  flex: 1; /* This will take the top half */
+  border: 1px solid rgba(255, 255, 255, 0.244);
+  background-color: #37006e21;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom-container {
+  flex: 1; /* This will take the bottom half */
+  display: flex;
+  margin-top: 10px;
+}
+
+.bottom-left {
+  flex: 1;
+  margin-right: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.244);
+  background-color: #37006e21;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 350px; 
+}
+
+.bottom-right {
+  flex: 1; /* This takes the right half of the bottom container */
+  margin-left: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.244);
+  background-color: #37006e21;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+}
+
+#level {
+  justify-items: right;
+  display: flex;
+}

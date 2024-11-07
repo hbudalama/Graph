@@ -1,5 +1,8 @@
 import van from 'vanjs-core';
 import { handleLogout } from './logout';
+import { initializeRadarChart } from './spiderweb';
+import { initializeProgressChart } from './progress';
+import { initializeLevel } from './level';
 
 const { div, img, button } = van.tags;
 
@@ -13,10 +16,14 @@ export function DashboardPage(): HTMLDivElement {
       button({ class: 'logout-btn', onclick: handleLogout}, 'Logout')
      ),
     div({ class: 'home-content' },
-      div({ class: 'top-container'}),
+      div({ class: 'top-container'},
+        div({
+          id: 'level'
+        })
+      ),
       div({ class: 'bottom-container'},
-        div({ class: 'bottom-left'}),
-        div({ class: 'bottom-right'})
+        div({ class: 'bottom-left', id: 'radar-chart'}),
+        div({ class: 'bottom-right', id: 'progress-chart'})
       )
     )
   );
@@ -31,4 +38,7 @@ export function ShowDashboardPage() {
   app.innerHTML = '';
 
   app.append(DashboardPage());
+  initializeRadarChart();
+  initializeProgressChart();
+  initializeLevel();
 }

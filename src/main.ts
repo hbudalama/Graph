@@ -1,6 +1,6 @@
 import { ShowLoginPage } from './loginPage'
 import { ShowDashboardPage } from './dashboard'
-import { isloggedin, login } from './login'
+import { isloggedin } from './login'
 
 const app = document.querySelector<HTMLDivElement>('#app')
 
