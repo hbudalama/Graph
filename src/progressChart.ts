@@ -9,7 +9,7 @@ export function initializeProgressChart() {
       },
     ],
     chart: {
-      height: 350,
+      height: 400,
       type: "line",
       zoom: {
         enabled: false,

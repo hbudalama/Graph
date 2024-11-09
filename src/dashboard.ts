@@ -1,9 +1,9 @@
 import van from 'vanjs-core';
 import { handleLogout } from './logout';
-import { initializeRadarChart } from './spiderweb';
-import { initializeProgressChart } from './progress';
+import { initializeRadarChart } from './spiderwebChart';
+import { initializeProgressChart } from './progressChart';
 import { initializeLevel } from './level';
-import { fetchRadarData } from './radar';
+import { fetchRadarData } from './spiderwebQuery';
 
 const { div, img, button, h1, p } = van.tags;
 
@@ -36,17 +36,49 @@ export function DashboardPage(): HTMLDivElement {
   );
 }
 
-export function ShowDashboardPage() {
+
+// export function ShowDashboardPage() {
+//   const app = document.querySelector<HTMLDivElement>('#app');
+//   if (!app) {
+//     throw new Error('App is not found');
+//   }
+
+//   app.innerHTML = '';
+
+//   app.append(DashboardPage());
+//   initializeRadarChart();
+//   initializeProgressChart();
+//   initializeLevel();
+//   fetchRadarData();
+// }
+
+export async function ShowDashboardPage() {
   const app = document.querySelector<HTMLDivElement>('#app');
   if (!app) {
     throw new Error('App is not found');
   }
 
-  app.innerHTML = '';
+  app.innerHTML = ''; // Clear existing content
 
+  // Append the dashboard page (assuming this returns an HTML element)
   app.append(DashboardPage());
-  initializeRadarChart();
-  initializeProgressChart();
-  initializeLevel();
-  fetchRadarData();
+
+  try {
+    // Fetch the radar data asynchronously
+    const radarData = await fetchRadarData();
+
+    // Check if the data is an error
+    if (radarData instanceof Error) {
+      console.error("Failed to load radar data");
+      return; // Exit the function if data fetch failed
+    }
+
+
+    initializeRadarChart(radarData);
+    initializeProgressChart();
+    initializeLevel();
+  } catch (error) {
+    console.error("Error initializing the dashboard:", error);
+  }
 }
+
