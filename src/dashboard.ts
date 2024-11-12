@@ -1,78 +1,96 @@
-import van from 'vanjs-core';
-import { handleLogout } from './logout';
-import { initializeRadarChart } from './spiderwebChart';
-import { initializeProgressChart } from './progressChart';
-import { initializeLevel } from './level';
-import { fetchRadarData } from './spiderwebQuery';
+import van from "vanjs-core";
+import { handleLogout } from "./logout";
+import { initializeRadarChart } from "./spiderwebChart";
+import { initializeProgressChart } from "./progressChart";
+import { initializeLevel } from "./level";
+import { fetchRadarData } from "./spiderwebQuery";
+import { fetchUserInfo } from "./userInfo";
 
 const { div, img, button, h1, p } = van.tags;
 
-export function DashboardPage(): HTMLDivElement {
-  return div(
-    {
-      class: 'home-container',
-    },
-    div({ class: 'header' },
-      div({ class: 'logo' }, img({ src: '/logo.svg' })),
-      button({ class: 'logout-btn', onclick: handleLogout}, 'Logout')
-     ),
-    div({ class: 'home-content' },
-      div({ class: 'top-container'},
-        div({ class: 'student-info'},
-          h1({ class: 'student-name'}, 'Hello, Hanin!'),
-          p({ class: 'email'}, 'Haneenbudalama@gmail.com'),
-          p({ class: 'audit-ratio'}, 'Audit ratio: 1.0!'),
-          p({ class: 'XP'}, '600KB'),
+// export async function DashboardPage(): Promise<HTMLDivElement> {
+//   const userInfo = await fetchUserInfo();
+//   return div(
+//     {
+//       class: "home-container",
+//     },
+//     div(
+//       { class: "header" },
+//       div({ class: "logo" }, img({ src: "/logo.svg" })),
+//       button({ class: "logout-btn", onclick: handleLogout }, "Logout")
+//     ),
+//     div(
+//       { class: "home-content" },
+//       div(
+//         { class: "top-container" },
+//         div(
+//           { class: "student-info" },
+//           h1({ class: "student-name" }, userInfo instanceof Error ? "Hello, Guest!" : `Hello, ${userInfo.firstName}`),
+//           p({ class: "email" }, userInfo instanceof Error ? "N/A" : userInfo.email),
+//           p({ class: "audit-ratio" }, userInfo instanceof Error ? "Audit ratio: N/A" : `Audit ratio: ${userInfo.auditRatio}`),
+//           p({ class: "XP" }, "600KB")
+//         ),
+//         div({
+//           id: "level",
+//         })
+//       ),
+//       div(
+//         { class: "bottom-container" },
+//         div({ class: "bottom-left", id: "radar-chart" }),
+//         div({ class: "bottom-right", id: "progress-chart" })
+//       )
+//     )
+//   );
+// }
+
+export async function DashboardPage(): Promise<HTMLDivElement> {
+  // Fetch user information asynchronously
+  const userInfo = await fetchUserInfo();
+
+  // Create the base container
+  const page = div({ class: "home-container" },
+    div({ class: "header" },
+      div({ class: "logo" }, img({ src: "/logo.svg" })),
+      button({ class: "logout-btn", onclick: handleLogout }, "Logout")
+    ),
+    div({ class: "home-content" },
+      div({ class: "top-container" },
+        div({ class: "student-info" },
+          h1({ class: "student-name" }, userInfo instanceof Error ? "Hello, Guest!" : `Hello, ${userInfo.firstName}!`),
+          p({ class: "email" }, userInfo instanceof Error ? "N/A" : userInfo.email),
+          p({ class: "audit-ratio" }, userInfo instanceof Error ? "Audit ratio: N/A" : `Audit ratio: ${userInfo.auditRatio}`),
+          // p({ class: "XP" }, "600KB") 
         ),
-        div({
-          id: 'level'
-        })
+        div({ id: "level" })
       ),
-      div({ class: 'bottom-container'},
-        div({ class: 'bottom-left', id: 'radar-chart'}),
-        div({ class: 'bottom-right', id: 'progress-chart'})
+      div({ class: "bottom-container" },
+        div({ class: "bottom-left", id: "radar-chart" }),
+        div({ class: "bottom-right", id: "progress-chart" })
       )
     )
   );
+
+  return page;
 }
 
-
-// export function ShowDashboardPage() {
-//   const app = document.querySelector<HTMLDivElement>('#app');
-//   if (!app) {
-//     throw new Error('App is not found');
-//   }
-
-//   app.innerHTML = '';
-
-//   app.append(DashboardPage());
-//   initializeRadarChart();
-//   initializeProgressChart();
-//   initializeLevel();
-//   fetchRadarData();
-// }
-
 export async function ShowDashboardPage() {
-  const app = document.querySelector<HTMLDivElement>('#app');
+  const app = document.querySelector<HTMLDivElement>("#app");
   if (!app) {
-    throw new Error('App is not found');
+    throw new Error("App is not found");
   }
 
-  app.innerHTML = ''; // Clear existing content
+  app.innerHTML = "";
 
-  // Append the dashboard page (assuming this returns an HTML element)
-  app.append(DashboardPage());
+  const dashboardElement = await DashboardPage();
+  app.append(dashboardElement);
 
   try {
-    // Fetch the radar data asynchronously
     const radarData = await fetchRadarData();
 
-    // Check if the data is an error
     if (radarData instanceof Error) {
       console.error("Failed to load radar data");
-      return; // Exit the function if data fetch failed
+      return; 
     }
-
 
     initializeRadarChart(radarData);
     initializeProgressChart();
@@ -81,4 +99,3 @@ export async function ShowDashboardPage() {
     console.error("Error initializing the dashboard:", error);
   }
 }
-

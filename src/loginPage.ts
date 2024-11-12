@@ -21,6 +21,7 @@ async function formSubmitHandler(e: SubmitEvent) {
 
 
   const jwtOrError = await login(formIdentifier.value, formPassword.value);
+  console.log(formIdentifier.value);
 
   if (jwtOrError instanceof Error) {
     alert(jwtOrError.message);

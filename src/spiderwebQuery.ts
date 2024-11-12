@@ -28,7 +28,7 @@ export async function fetchRadarData(): Promise<IRadarQuery[] | Error> {
 
   const query: IEngineQuery = {
     query: RADAR_QUERY,
-  };
+  };  
 
   try {
     const response = await fetch(url, {
