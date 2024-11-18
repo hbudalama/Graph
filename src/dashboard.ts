@@ -4,7 +4,7 @@ import { initializeRadarChart } from "./spiderwebChart";
 import { initializeProgressChart } from "./progressChart";
 import { initializeLevel } from "./level";
 import { fetchRadarData } from "./spiderwebQuery";
-import { fetchUserInfo } from "./userInfo";
+import { fetchUserInfo, userLogin } from "./userInfo";
 
 const { div, img, button, h1, p } = van.tags;
 
@@ -59,7 +59,6 @@ export async function DashboardPage(): Promise<HTMLDivElement> {
           h1({ class: "student-name" }, userInfo instanceof Error ? "Hello, Guest!" : `Hello, ${userInfo.firstName}!`),
           p({ class: "email" }, userInfo instanceof Error ? "N/A" : userInfo.email),
           p({ class: "audit-ratio" }, userInfo instanceof Error ? "Audit ratio: N/A" : `Audit ratio: ${userInfo.auditRatio}`),
-          // p({ class: "XP" }, "600KB") 
         ),
         div({ id: "level" })
       ),
@@ -93,8 +92,9 @@ export async function ShowDashboardPage() {
     }
 
     initializeRadarChart(radarData);
-    initializeProgressChart();
+    initializeProgressChart(userLogin);
     initializeLevel();
+
   } catch (error) {
     console.error("Error initializing the dashboard:", error);
   }
