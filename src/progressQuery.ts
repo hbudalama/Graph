@@ -1,5 +1,3 @@
-import { userLogin } from "./userInfo";
-
 interface IEngineQuery {
   query: string;
   variables?: {};

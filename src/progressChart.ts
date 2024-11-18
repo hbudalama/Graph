@@ -1,6 +1,5 @@
 import ApexCharts from "apexcharts";
 import { fetchProgressQuery } from "./progressQuery";
-import { IProgressQuery } from "./progressQuery";
 
 export async function initializeProgressChart(userLogin: string) {
 try {
