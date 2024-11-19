@@ -86,11 +86,11 @@ body {
   height: 350px;
 }
 
-#level {
+/* #level {
   justify-items: right;
   display: flex;
   justify-content: flex-end;
-}
+} */
 
 .student-name {
   color: #e5d3f2d1;
@@ -107,4 +107,49 @@ body {
 #radar-chart {
   height: 100%;
   width: 100%;
+}
+
+#level {
+  display: flex;
+  justify-content: center; /* Center the circle */
+  align-items: center;
+  height: 200px; 
+  width: 200px;  
+  position: relative;
+  margin-right: 30px;
+}
+
+/* Style the level container (the overall ring) */
+.gradient-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(142,78,198,1) 29%, rgba(16,139,255,1) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  animation: gradientAnimation 5s linear infinite;
+}
+
+/* Inner white circle */
+.inner-circle {
+  position: absolute;
+  width: 150px;   /* Adjusted size */
+  height: 150px;  /* Adjusted size */
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Percentage text */
+.percentage {
+  font-size: 3em; /* Adjusted font size for better visibility */
+  color: #111;
+  font-weight: bold;
+  font-family: garamond;
 }

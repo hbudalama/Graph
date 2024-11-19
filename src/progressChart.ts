@@ -10,8 +10,9 @@ try {
       return;
     }
 
-    const categories = progressData.map((transaction) => new Date(transaction.createdAt).toLocaleDateString());
+    // const categories = progressData.map((transaction) => new Date(transaction.createdAt).toLocaleDateString());
     const data = progressData.map((transaction) => transaction.amount);
+    const project = progressData.map((transaction) => transaction.objectName);
 
     const options = {
       series: [
@@ -59,7 +60,7 @@ try {
         },
       },
       xaxis: {
-        categories: categories, // X-axis categories (dates of transactions)
+        categories: project, // X-axis categories (dates of transactions)
         title: {
           text: "Date",
         },
