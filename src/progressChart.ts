@@ -38,8 +38,13 @@ try {
         curve: "smooth",
       },
       title: {
-        text: "XP Progress Over Time",
-        align: "left",
+        text: "XP Progress",
+        style: {
+          color: "#e5d3f2d1",
+          fontSize: "30px", 
+          fontFamily: "garamond",
+          fontWeight: "bold",
+        },
       },
       grid: {
         row: {
@@ -60,12 +65,24 @@ try {
         },
       },
       xaxis: {
-        categories: project, // X-axis categories (dates of transactions)
-        title: {
-          text: "Date",
-        },
+        categories: project, // X-axis categories (project names)
         labels: {
           rotate: -45, // Rotate labels for better readability
+          style: {
+            colors: "#979797",
+            fontSize: "12px", 
+            fontFamily: "garamond", 
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: "#979797",
+            fontSize: "15px", 
+            fontFamily: "garamond",
+            fontWeight: "bold"
+          },
         },
       },
     };

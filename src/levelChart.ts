@@ -1,20 +1,17 @@
-import { fetchLevel } from "./levelQuery";
+import { fetchLevel } from './levelQuery';
+import van from "vanjs-core";
+const {div, span, h5} = van.tags;
 
-function createLevelContent(percentage: number): HTMLDivElement {
-  const gradientRing = document.createElement("div");
-  gradientRing.className = "gradient-ring";
 
-  const innerCircle = document.createElement("div");
-  innerCircle.className = "inner-circle";
-
-  const percentageText = document.createElement("span");
-  percentageText.className = "percentage";
-  percentageText.textContent = `${percentage}`;
-
-  innerCircle.appendChild(percentageText);
-  gradientRing.appendChild(innerCircle);
-
-  return gradientRing;
+export function createLevelContent(percentage: number): HTMLDivElement {
+  return div(
+    { class: "gradient-ring" },
+    div(
+      { class: "inner-circle" },
+      h5("Level"),
+      span({ class: "percentage" }, `${percentage}`)
+    )
+  );
 }
 
 export async function initializeLevel(userLogin: string) {
@@ -22,25 +19,27 @@ export async function initializeLevel(userLogin: string) {
     const levelData = await fetchLevel(userLogin);
 
     if (levelData instanceof Error) {
-      console.error("Failed to fetch level data:", levelData.message);
+      console.error('Failed to fetch level data:', levelData.message);
       return;
     }
 
-    const levelPercentage =
-      levelData.level && levelData.level.length > 0
-        ? // @ts-ignore
-          levelData.level[0].amount
-        : 0;
 
-    const levelElement = document.querySelector("#level");
+    const levelPercentage = levelData.level && levelData.level.length > 0
+    // @ts-ignore
+      ? levelData.level[0].amount 
+      : 0;
+
+
+    const levelElement = document.querySelector('#level');
 
     if (levelElement) {
+
       const levelContent = createLevelContent(levelPercentage);
       levelElement.appendChild(levelContent);
     } else {
-      console.error("Level container not found");
+      console.error('Level container not found');
     }
   } catch (error) {
-    console.error("Error initializing level component:", error);
+    console.error('Error initializing level component:', error);
   }
 }
