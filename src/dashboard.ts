@@ -15,7 +15,7 @@ export async function DashboardPage(): Promise<HTMLDivElement> {
   // Create the base container
   const page = div({ class: "home-container" },
     div({ class: "header" },
-      div({ class: "logo" }, img({ src: "/logo.svg" })),
+      div({ class: "logo" }, img({ src: "./logo.svg" })),
       button({ class: "logout-btn", onclick: handleLogout }, "Logout")
     ),
     div({ class: "home-content" },

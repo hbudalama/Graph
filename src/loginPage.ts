@@ -37,7 +37,7 @@ async function formSubmitHandler(e: SubmitEvent) {
 export function LoginPage() {
   return div(
     { class: 'login-container' },
-    div({ class: 'logo absolute' }, img({ src: '/logo.svg' })),
+    div({ class: 'logo absolute' }, img({ src: './logo.svg' })),
     div(
       {
         class: 'loginForm-container',
