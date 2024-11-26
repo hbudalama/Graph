@@ -76,7 +76,8 @@ body {
 }
 
 .bottom-left {
-  flex: 1;
+  /* flex: 1; */
+  width: 35%;
   border: 1px solid rgba(255, 255, 255, 0.244);
   background-color: #37006e21;
   display: flex;
@@ -86,8 +87,7 @@ body {
 }
 
 .bottom-right {
-  flex: 1; /* This takes the right half of the bottom container */
-
+  flex-grow: 1; /* This takes the right half of the bottom container */
   border: 1px solid rgba(255, 255, 255, 0.244);
   background-color: #37006e21;
   display: flex;
@@ -112,7 +112,7 @@ body {
 
 #radar-chart {
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
 }
 
 #level {
