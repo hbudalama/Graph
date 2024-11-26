@@ -51,10 +51,12 @@ export async function fetchUserInfo(): Promise<IUserInfo | Error> {
       if (user) {
         userLogin = user.login;
         console.log("Parsed User Info:", user);
+        const roundedAuditRatio = parseFloat(user.auditRatio.toFixed(2));
+
         return {
           firstName: user.firstName,
           email: user.email,
-          auditRatio: user.auditRatio,
+          auditRatio: roundedAuditRatio,
           login: user.login,
         };
       }
